@@ -1,0 +1,26 @@
+name: Go
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          go-version: [1.16, 1.17, 1.18]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Set up Go"
+        uses: actions/setup-go@v2
+        with:
+          node-version: ${{ matrix.go-version }}
+          check-latest: true
+      - name: "Installing dependencies"
+        run: go install
+      - name: "Run all test"
+        run: go test -v ./...
