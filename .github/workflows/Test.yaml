@@ -18,7 +18,7 @@ jobs:
       - name: "Set up Go"
         uses: actions/setup-go@v2
         with:
-          node-version: ${{ matrix.go-version }}
+          go-version: ${{ matrix.go-version }}
           check-latest: true
       - name: "Run all test"
         run: go test -v ./...
