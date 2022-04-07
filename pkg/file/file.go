@@ -3,13 +3,11 @@ package file
 import (
 	"errors"
 	"io/ioutil"
-	"os"
 	"strings"
 )
 
-func ProcessFile() ([]string, error) {
-	path, _ := os.Getwd()
-	bytes, err := ioutil.ReadFile(path + "/input.txt")
+func ProcessFile(path string) ([]string, error) {
+	bytes, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, errors.New("error trying to read the input file")
 	}

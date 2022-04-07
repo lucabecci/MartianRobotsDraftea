@@ -9,7 +9,8 @@ import (
 )
 
 func main() {
-	data, err := file.ProcessFile()
+	path, _ := os.Getwd()
+	data, err := file.ProcessFile(path + "/input.txt")
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
