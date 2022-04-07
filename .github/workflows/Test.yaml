@@ -20,7 +20,5 @@ jobs:
         with:
           node-version: ${{ matrix.go-version }}
           check-latest: true
-      - name: "Installing dependencies"
-        run: go install
       - name: "Run all test"
         run: go test -v ./...
