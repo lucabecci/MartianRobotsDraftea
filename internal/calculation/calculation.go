@@ -8,6 +8,9 @@ import (
 	"github.com/lucabecci/MartianRobotsDraftea/internal/robot"
 )
 
+// Process of calculation is the main process of the system
+// It is the flow of all the calculation of the problem
+// Returns an array with the final process of the robots
 func Process(instrucs []string) ([]robot.Robot, error) {
 	var result []robot.Robot
 	coordinates := strings.Split(instrucs[0], " ")

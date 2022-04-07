@@ -6,6 +6,8 @@ import (
 	"fmt"
 )
 
+// Generate function that will allow us to generate a unique identifier
+// It returns the unique identifier and an error if it exists
 func Generate() (string, error) {
 	var uuid string
 	b := make([]byte, 16)

@@ -1,5 +1,6 @@
 package storage
 
+// var of the storage to use
 var storage LinkedList
 
 // Node represents a node of linked list
@@ -14,6 +15,8 @@ type LinkedList struct {
 	len  int
 }
 
+// Insert is responsible for inserting the interface received in a new node
+// It is an impure function and does not return data.
 func Insert(val map[string]interface{}) {
 	n := Node{}
 	n.value = val
@@ -33,6 +36,8 @@ func Insert(val map[string]interface{}) {
 	}
 }
 
+// GetByAxis obtains and validates that there is a robot with that x and y in the storage
+// Returns true or false depending on the validation
 func GetByAxis(x, y int) (map[string]interface{}, bool) {
 	x_str := float64(x)
 	y_str := float64(y)

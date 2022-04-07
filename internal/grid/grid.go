@@ -5,11 +5,14 @@ import (
 	"strconv"
 )
 
+// Struct for a Grid
 type Grid struct {
 	X int
 	Y int
 }
 
+// Create a grid from the coordinates
+// Returns the grid created together with a possible error
 func GetGrid(coordinates []string) (Grid, error) {
 	coordinate_x, err := strconv.Atoi(coordinates[0])
 	if err != nil {
@@ -26,6 +29,9 @@ func GetGrid(coordinates []string) (Grid, error) {
 	}, nil
 }
 
+// Method of Grid struct
+// Validates that the grid does not have an invalid x-axis and y-axis
+// Returns an error if it exists
 func (g *Grid) Validate() error {
 	if g.X > 50 || g.Y > 50 {
 		return errors.New("the grid is invalid")

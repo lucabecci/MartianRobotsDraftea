@@ -11,6 +11,7 @@ import (
 	"github.com/lucabecci/MartianRobotsDraftea/pkg/uuid"
 )
 
+// Robot struct
 type Robot struct {
 	UUID        string
 	X           int
@@ -19,6 +20,8 @@ type Robot struct {
 	Lost        bool
 }
 
+// Create a robot from the received parameters
+// Return the robot together with a possible error
 func GetRobot(x, y string, orientation string) (Robot, error) {
 	coordinate_x, err := strconv.Atoi(x)
 	if err != nil {
@@ -36,6 +39,8 @@ func GetRobot(x, y string, orientation string) (Robot, error) {
 	return robot, nil
 }
 
+// Robot struct method
+// Execute the instructions received in order to obtain the final state of the robot
 func (r *Robot) ExecInstruction(instruction []string, grid grid.Grid) {
 	for i := 0; i < len(instruction); i++ {
 		if r.Lost {
@@ -52,6 +57,8 @@ func (r *Robot) ExecInstruction(instruction []string, grid grid.Grid) {
 	}
 }
 
+// Robot struct method
+// Move the robot to the left
 func (r *Robot) moveLeft() {
 	if cardenal.FindIndex(r.Orientation)-1 < 0 {
 		r.Orientation = cardenal.Cardenal[len(cardenal.Cardenal)-1]
@@ -60,6 +67,8 @@ func (r *Robot) moveLeft() {
 	}
 }
 
+// Robot struct method
+// Move forward and validate that the robot is not lost
 func (r *Robot) moveForward(grid grid.Grid) {
 	if r.Orientation == "N" {
 		if r.Y == grid.Y {
@@ -97,6 +106,8 @@ func (r *Robot) moveForward(grid grid.Grid) {
 	}
 }
 
+// Robot struct method
+// Move the robot to the right
 func (r *Robot) moveRight() {
 	if cardenal.FindIndex(r.Orientation)+1 >= len(cardenal.Cardenal) {
 		r.Orientation = cardenal.Cardenal[0]
@@ -105,6 +116,9 @@ func (r *Robot) moveRight() {
 	}
 }
 
+// Robot struct method
+// Validate that the robot is not lost or that there is not one lost in that direction
+// Returns a bool depending on the validation
 func (r *Robot) lostRobot() bool {
 	_, ubicationExists := storage.GetByAxis(r.X, r.Y)
 	if ubicationExists {
@@ -114,6 +128,9 @@ func (r *Robot) lostRobot() bool {
 	}
 }
 
+// Robot struct method
+// Convert the robot struct to a generic map for storage
+// Return the generic map
 func (r *Robot) convert() map[string]interface{} {
 	var inInterface map[string]interface{}
 	inrec, _ := json.Marshal(r)

@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+// Process the test file from a path
+// Returns the information in array string
 func ProcessFile(path string) ([]string, error) {
 	bytes, err := ioutil.ReadFile(path)
 	if err != nil {

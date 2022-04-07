@@ -8,6 +8,7 @@ import (
 	"github.com/lucabecci/MartianRobotsDraftea/pkg/file"
 )
 
+// System startup function
 func main() {
 	path, _ := os.Getwd()
 	data, err := file.ProcessFile(path + "/input.txt")
