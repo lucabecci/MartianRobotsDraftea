@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetGrid(t *testing.T) {
+func TestCardenal(t *testing.T) {
 	t.Run("Get cardenal N", func(t *testing.T) {
 		coordinate := "N"
 		index := cardenal.FindIndex(coordinate)
