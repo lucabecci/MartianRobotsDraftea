@@ -1,4 +1,4 @@
-name: Test
+name: Build
 
 on:
   push:
@@ -20,5 +20,5 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
           check-latest: true
-      - name: "Run all test"
-        run: go test -v ./...
+      - name: "Build"
+        run: go build ./cmd/main.go
