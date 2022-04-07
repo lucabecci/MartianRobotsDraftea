@@ -6,9 +6,8 @@ import (
 )
 
 type Grid struct {
-	X         int
-	Y         int
-	LostRobot []interface{}
+	X int
+	Y int
 }
 
 func GetGrid(coordinates []string) (Grid, error) {
